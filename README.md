@@ -12,6 +12,7 @@ Repository ini berisi tugas dan eksperimen menggunakan A-Frame untuk pengembanga
 
 ## File Utama
 
+- **Task1**: File yang berisi link gdrive  untuk tugas pertama pada minggu ini.
 - **Task2.html**: File HTML untuk tugas kedua pada minggu ini.
 - **Task3.html**: File HTML untuk tugas ketiga pada minggu ini.
 - **Task4.html**: File HTML untuk tugas keempat, yang telah diperbarui pada commit `debug5`.
