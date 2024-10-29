@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Input</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <script>
+      AFRAME.registerComponent("keyboard-input", {
+        init: function () {
+          let el = this.el;
+          el.addEventListener("body-loaded", function () {
+            document.addEventListener("keydown", function (e) {
+              let bola = document.querySelector("#maroon");
+              let speed = 5;
+
+              let impulse = new CANNON.Vec3(0, 0, 0);
+              if (e.key == "w") impulse.z -= speed;
+              else if (e.key == "s") impulse.z += speed;
+              else if (e.key == "a") impulse.x -= speed;
+              else if (e.key == "d") impulse.x += speed;
+
+              bola.body.applyImpulse(impulse, new CANNON.Vec3(0, 0, 0));
+            });
+          });
+        },
+      });
+    </script>
+    <a-scene physics="debug:true;">
+      <a-entity camera position="0 1.5 0">
+        <a-cursor></a-cursor>
+      </a-entity>
+
+      <a-box
+        shadow
+        rotation="-90 0 0"
+        color="#CDC1FF"
+        static-body
+        width="10"
+        height="10"
+        depth="0.2"
+        position="0 0 -5"
+      ></a-box>
+      <a-sphere
+        keyboard-input
+        id="maroon"
+        radius="0.2"
+        color="#3D0301"
+        shadow
+        dynamic-body
+        position="0 1.5 -3"
+      ></a-sphere>
+      <a-box
+        id="green"
+        color="#7ED4AD"
+        shadow
+        dynamic-body
+        position="2 1.5 -5"
+      ></a-box>
+      <a-box
+        id="red"
+        color="#D76C82"
+        shadow
+        dynamic-body
+        position="-2 1.5 -5"
+      ></a-box>
+    </a-scene>
+  </body>
+</html>
