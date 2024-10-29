@@ -82,8 +82,8 @@
           let cam = document.querySelector("#cam");
           let position = cam.getAttribute("position");
 
-          position.x -= movement.x;
-          position.z -= movement.z;
+          position.x += movement.x;
+          position.z += movement.z;
           cam.setAttribute("position", position);
         },
         init: function () {
@@ -96,6 +96,11 @@
           down.addEventListener("touchstart", clickListener);
           left.addEventListener("touchstart", clickListener);
           right.addEventListener("touchstart", clickListener);
+
+          up.addEventListener("touchend", touchListener);
+          down.addEventListener("touchend", touchListener);
+          left.addEventListener("touchend", touchListener);
+          right.addEventListener("touchend", touchListener);
         },
       });
     </script>
